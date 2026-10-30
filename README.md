@@ -1,6 +1,7 @@
 # Doom Rails offline launcher
 
-An offline launcher for the standalone and Steam releases of **Doom Rails 1.1.0**.
+An offline launcher for the GamersGate standalone download and Steam release of
+**Doom Rails 1.1.0**.
 Uses your existing game installation. No game executable, assets, or license keys
 are distributed in this repository or its release downloads.
 
@@ -54,12 +55,16 @@ Native Windows has not been tested.
 
 ## Supported executables
 
-Both display version 1.1.0 but have different executable layouts. Exact SHA-256
+The tested standalone copy came from the GamersGate download and is essentially
+the same as the commonly circulated “demo” version. Other demo copies are
+supported only if their executable matches the hash below.
+
+Both tested builds display version 1.1.0 but have different executable layouts. Exact SHA-256
 matching selects the patch profile; unknown builds are rejected before launch.
 
 | Build | Original executable SHA-256 |
 | --- | --- |
-| Standalone | `a09b550234339bac087768fc5f95e9a026ab8b23f4195c257f8242dc69aa339f` |
+| GamersGate standalone / matching demo | `a09b550234339bac087768fc5f95e9a026ab8b23f4195c257f8242dc69aa339f` |
 | Steam, build ID 21247 | `fbba9d10ff5da3eb006fe6f9ca0214d41bcfb42a343e2f81d99ad47deec6d8e9` |
 
 ## How it works
@@ -78,7 +83,7 @@ that every protected path is unrestricted.
 
 Local verification, October 2026:
 
-- Standalone under Wine 11.0 Staging: title screen, selection, briefing, and active
+- GamersGate standalone under Wine 11.0 Staging: title screen, selection, briefing, and active
   single-player gameplay. Trial-state samples stayed zero during an eight-minute
   monitored session; this was not a completed level or continuous driving test.
 - Steam under Wine and Proton 10: rendered title/login screen, successful launcher
