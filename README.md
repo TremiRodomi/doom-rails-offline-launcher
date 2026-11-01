@@ -38,10 +38,44 @@ constructor before registration. Proton 10 was verified working with default
 DXVK on the desktop and WineD3D in a virtual display. This finding is specific
 to the tested runtimes; future Experimental versions may differ.
 
-### Windows
+### Steam on Windows
+
+1. In Steam, right-click **Doom Rails → Manage → Browse local files**. Extract
+   the downloaded ZIP here, so `Play Doom Rails.exe` is beside `Doom Rails.exe`.
+   Copy the folder's full path from File Explorer's address bar.
+2. Open **Doom Rails → Properties → General → Launch Options** and paste the
+   following as **one line**, replacing the example path with your own:
+
+   ```text
+   cmd.exe /d /s /c ""C:\Program Files (x86)\Steam\steamapps\common\Doom Rails\Play Doom Rails.exe" --wait & rem %command%"
+   ```
+
+3. Close Properties and press **Play** in Steam. Use this button each time you
+   want to launch through the offline helper.
+
+Keep all quotation marks, including the two before `C:` and the final one after
+`%command%`. If you move the installation, update the path. For windowed mode,
+add `--windowed` immediately after `--wait`.
+
+`--wait` keeps the helper running until the game exits. The `rem %command%`
+part consumes Steam's original launch command as a comment, so it neither starts
+a second game nor passes unsupported arguments to the helper. Do not use
+`"...\Play Doom Rails.exe" %command%` on its own: that produces an **Unknown
+option** error. A Command Prompt window may remain open while playing; leave it
+open until you exit the game.
+
+To undo this setup, clear **Launch Options**. There is no need to rename or
+replace the original game executable.
+
+**Verification status:** native Windows and this Steam launch-option setup have
+not been tested; the launcher itself was verified under Wine and Proton as
+described below. The command uses Windows' documented
+[`cmd` quoting rules](https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/cmd)
+and [`rem` comments](https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/rem).
+
+### Windows without Steam
 
 Run `Play Doom Rails.exe` beside the original `Doom Rails.exe` each time.
-Native Windows has not been tested.
 
 ### Command-line options
 
